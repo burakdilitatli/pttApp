@@ -39,11 +39,16 @@ class MainActivity : AppCompatActivity() {
     private val minBufferSize = AudioRecord.getMinBufferSize(
         sampleRate, channelConfig, audioFormat
     )
-    private val wsUrl = "ws://192.168.1.100:8080"
+    private val wsUrl = "ws://10.0.2.2:8080/"
 
     private val wsListener = object : WebSocketListener() {
         override fun onOpen(webSocket: WebSocket, response: Response) {
             Log.d("PTT", "WS bağlantısı açıldı")
+
+
+           /* override fun onOpen(ws: WebSocket, resp: Response) {
+                Log.d("PTT", "WS bağlantısı açıldı")
+            }*/
         }
 
         override fun onMessage(webSocket: WebSocket, bytes: ByteString) {

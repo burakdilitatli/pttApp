@@ -1,10 +1,7 @@
 const WebSocket = require('ws')
-const wss = new WebSocket.Server({ port: 8080 })
+const wss = new WebSocket.Server({ host: '0.0.0.0', port: 8080 })
 
 wss.on('connection', ws => {
   console.log('Yeni bağlantı')
-  ws.on('message', msg => {
-    // Gelen ham PCM veriyi burada alırsın
-    ws.send(msg)  // loopback test için aynı veriyi geri gönder
-  })
+  ws.on('message', msg => ws.send(msg))
 })
